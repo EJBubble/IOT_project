@@ -1,8 +1,12 @@
-# IOT SAFE
-![picture]
+# IOT FINAL PROJECT -- *IOT SAFE*
+
+---
+![picture](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_2.jpg)
+___
 
 ## Overview
 **_IOT SAFE_** is an IOT project that can help you who need to protect your personal privacy. You can go anywhere at ease after you lock the safe. Therefore, you can place the IOT SAFE in your room or your dormitory to avoid someone from stealing your important things.
+
 
 ## Background
 Someone like to eat my snack actively.  QQ
