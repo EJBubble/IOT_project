@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+            <head>
+                        <title>IOT保險箱</title>
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+                        <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+                        <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+                        <meta http-equiv="refresh" content="15">
+                        <meta charset="UTF-8">
+                        <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css')}}">
+            </head>
+            <body>
+                 <div id="header">
+                     <p>
+                         <center>IOT保險箱<center>
+                     </p>
+                 </div>
+                 <div>
+                     <center>
+                         <form action="/1" method="POST">
+                             <p><button style=width:100px;height:40px;background-color:red;color:white; <button id="on" class="solenoid">ON</button> <P>
+                             </br>
+                         </form>                          
+                         <form action="/2" method="POST">
+                             <p><button style=width:100px;height:40px;background-color:black;color:white; <button id="off" class="solenoid">OFF</button> <P>
+                             </br>
+                         </form>
+          
+                          <p id="bad"> ⇩入侵者/Bad Guy ⇩</p>
+                          <img src="{{url_for('static', filename='error.jpg')}}" />
+                     </center>
+                 </div>
+         
+            </body>
+</html>

@@ -1,0 +1,18 @@
+img{
+    height: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    }
+    
+#header{
+    font-size: 42px;
+    color: yellow;
+    background-color: black;
+    font-weight: bold;
+    }
+    
+#bad{
+    font-size: 30px;
+    font-weight: bold;
+   }
