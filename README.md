@@ -252,6 +252,7 @@ Execute `train.py`
 sudo python3 train.py
 ```
 ```python
+#train.py
 import numpy as np
 from PIL import Image
 import os
