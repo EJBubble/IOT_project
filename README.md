@@ -298,8 +298,8 @@ print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids)))
 ### trainer.yml will be stored in the file 'trainer'
 
 ## Step 8: Finish the Safe
-Open two terminals  
-- Execute `IOT.py` on one terminal
+Open two terminals to control the IOT safe
+### Execute `IOT.py` on one terminal
 ```
 sudo python3 IOT.py
 ```
@@ -346,7 +346,13 @@ def reroute(changepin):
 app.run(debug=True, host='0.0.0.0', port='80')
 ```
 ![IOT_1](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_1.png)
-- Execute `all.py` on another terminal
+Here for [Index.html](https://github.com/EJBubble/IOT_project/tree/main/templates) and [mystyle.css](https://github.com/EJBubble/IOT_project/tree/main/static/css)
+
+1. You can press on to open the lock
+2. You can press off to close the lock and the Pi Camera
+3. The unsuccessful face detection will be known because flask will upload error.png to website
+
+### Execute `all.py` on another terminal
 ```
 sudo python3 all.py
 ```
