@@ -581,6 +581,9 @@ finally:
 6. Upload the picture to the website
 7. You need to use terminal to close the system because intruder
 8. LED will be dark
+---
+### Face Detection
+If you want to add user of IOT safe, you can run step 6 to step 8 again.
 ## Video
 ## References
 [https://shumeipai.nxez.com/2018/03/09/real-time-face-recognition-an-end-to-end-project-with-raspberry-pi.html](https://shumeipai.nxez.com/2018/03/09/real-time-face-recognition-an-end-to-end-project-with-raspberry-pi.html)  
