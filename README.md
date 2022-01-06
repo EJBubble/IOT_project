@@ -168,6 +168,10 @@ raspistill -o Desktop/image.jpg
 ![IOT_4](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_4.jpg)
 ### *__Finish to install seven segement、push button、relay module、power supply and 3.5mm speaker__*
 
+## Step 3.1: Make the Safe
+![IOT_6](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_6.jpg)
+![IOT_7](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_7.jpg)
+
 ## Step 4: Install Python library that the project need
 ```
 //RPi.GPIO
@@ -293,5 +297,261 @@ print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids)))
 ```
 ### trainer.yml will be stored in the file 'trainer'
 
-## Step 8: 
+## Step 8: Finish the Safe
+Open two terminals  
+- Execute `IOT.py` on one terminal
+```
+sudo python3 IOT.py
+```
+
+```python
+#IOT.py
+from flask import Flask, render_template, request, redirect, url_for, make_response
+import time
+import RPi.GPIO as GPIO
+from datetime import timedelta
+
+#Pin of relay module
+relay = 1
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(relay, GPIO.OUT) # GPIO Assign mode
+GPIO.output(relay, GPIO.LOW)
+
+app = Flask(__name__) #set up flask server
+#when the root IP is selected, return index.html page
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
+#telling the Flask that what URL should trigger our function
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    return render_template('index.html')    
+
+
+#Uses methods from motors.py to send commands to the GPIO to control the solenoid lock
+@app.route('/<changepin>', methods=['POST'])
+def reroute(changepin):
+    changePin = int(changepin) #cast changepin to an int
+    if changePin == 1:
+        print("ON")
+        GPIO.output(relay, GPIO.HIGH)
+    elif changePin == 2:
+        print("OFF")
+        GPIO.output(relay, GPIO.LOW)
+    response = make_response(redirect(url_for('index')))
+    return(response)
+
+  
+app.run(debug=True, host='0.0.0.0', port='80')
+```
+![IOT_1](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_1.png)
+- Execute `all.py` on another terminal
+```
+sudo python3 all.py
+```
+
+```python
+#all.py
+import cv2
+import numpy as np
+import os
+import time
+import RPi.GPIO as GPIO
+import pygame
+
+#init cv2.waitKey
+k = 0
+
+i = 0
+
+#set PIN
+BUTTON_PIN = 14
+LED_PIN = 15
+relay = 1
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(LED_PIN, GPIO.OUT)
+GPIO.setup(relay, GPIO.OUT) # GPIO Assign mode
+GPIO.output(relay, GPIO.LOW)
+
+
+#setup output pins
+GPIO.setup(19, GPIO.OUT)      #GPIO19
+GPIO.setup(18, GPIO.OUT)      #GPIO18
+GPIO.setup(16, GPIO.OUT)      #GPIO16
+GPIO.setup(13, GPIO.OUT)      #GPIO13
+GPIO.setup(12, GPIO.OUT)      #GPIO12
+GPIO.setup(20, GPIO.OUT)      #GPIO20
+GPIO.setup(21, GPIO.OUT)      #GPIO21
+
+
+#define 7 segment digits
+digitclr=[1,1,1,1,1,1,1]
+digitH=[0,1,1,0,1,1,1]
+digitE=[1,0,0,1,1,1,1]
+digitL=[0,0,0,1,1,1,0]
+digito1=[1,1,1,1,1,1,0]
+digito2=[0,0,1,1,1,0,1]
+digitR=[0,0,0,0,1,0,1]
+digitn=[0,0,0,0,0,0,0]
+gpin=[19,18,16,13,12,20,21]
+
+#output 7 segment
+def digdisp(digit):
+    for x in range (0,7):
+        GPIO.output(gpin[x], digitclr[x])
+    for x in range (0,7):
+        GPIO.output(gpin[x], digit[x])
+
+#Recognize      
+recognizer = cv2.face.LBPHFaceRecognizer_create()
+recognizer.read('/home/user/IOT_project/trainer/trainer.yml')
+cascadePath = "/home/User/opencv/data/haarcascades/haarcascade_frontalface_default.xml"
+faceCascade = cv2.CascadeClassifier(cascadePath);
+#User: your username
+
+font = cv2.FONT_HERSHEY_SIMPLEX
+ 
+#iniciate id counter
+id = 0
+ 
+# names related to ids: example ==> GoodGuy: id=1,  etc
+names = ['None', 'GoodGuy', 'GoodGuy', 'GoodGuy', 'GoodGuy', 'GoodGuy'] 
+# Initialize and start realtime video capture
+cam = cv2.VideoCapture(0)
+cam.set(3, 640) # set video widht
+cam.set(4, 480) # set video height
+# Define min window size to be recognized as a face
+minW = 0.1*cam.get(3)
+minH = 0.1*cam.get(4)
+
+try:
+    print('按下 Ctrl-C 可停止程式')
+    while True:
+        if GPIO.input(BUTTON_PIN) == GPIO.LOW: #Detect Button
+            if GPIO.input(LED_PIN) == 0:  #Detect LED
+                  
+                #Open LED    
+                GPIO.output(LED_PIN, GPIO.HIGH)
+                time.sleep(0.01)
+                time.sleep(0.01)
+                
+                while True:
+                    #Detect the control lock whether to lock
+                    if i==1 and GPIO.input(relay) == GPIO.LOW:
+                        cv2.destroyAllWindows()
+                        i = 0
+                        break
+                    
+                    
+                    ret, img =cam.read()
+                    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+     
+                    faces = faceCascade.detectMultiScale( 
+                        gray,
+                        scaleFactor = 1.2,
+                        minNeighbors = 5,
+                        minSize = (int(minW), int(minH)),
+                       )
+ 
+                    for(x,y,w,h) in faces:
+                        cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
+                        id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
+ 
+                        # Check confidence of detect face
+                        if (confidence < 60):
+                            id = names[id]
+                            confidence = "  {0}%".format(round(100 - confidence))
+                            
+                            if(i == 0):
+                                print("Hello")
+                                #open the lock
+                                GPIO.output(relay, GPIO.HIGH)
+                                #play hellosound
+                                pygame.mixer.init()
+                                pygame.mixer.music.load('hello.mp3')
+                                pygame.mixer.music.play()
+                                #output 7 segment
+                                digdisp(digitH)
+                                time.sleep(0.8)
+                                digdisp(digitE)
+                                time.sleep(0.8)
+                                digdisp(digitL)
+                                time.sleep(0.8)
+                                digdisp(digitn)
+                                time.sleep(0.1)
+                                digdisp(digitL)
+                                time.sleep(0.8)
+                                digdisp(digito1)
+                                time.sleep(0.8)
+                                
+                                #output only one times
+                                i+=1
+                                
+                                
+                        
+                        else:
+                            id = "unknown"
+                            confidence = "  {0}%".format(round(100 - confidence))
+                            
+                            if(i == 0):
+                                print("Error")
+                                #detect the bad guy and take a picture 
+                                cv2.imwrite("/home/ej108403545/FaceDetection/static/error.jpg",img)
+                                #play error sound
+                                pygame.mixer.init()
+                                pygame.mixer.music.load('error.mp3')
+                                pygame.mixer.music.play()
+                                #output 7 segment
+                                digdisp(digitE)
+                                time.sleep(0.8)
+                                digdisp(digitR)
+                                time.sleep(0.8)
+                                digdisp(digitn)
+                                time.sleep(0.2)
+                                digdisp(digitR)
+                                time.sleep(0.8)
+                                digdisp(digito2)
+                                time.sleep(0.8)
+                                digdisp(digitR)
+                                time.sleep(0.8)
+                                
+                                #output only one times
+                                i+=2
+                                
+                    
+         
+                        cv2.putText(img, str(id), (x+5,y-5), font, 1, (255,255,255), 2)
+                        cv2.putText(img, str(confidence), (x+5,y+h-5), font, 1, (255,255,0), 1)  
+     
+                    cv2.imshow('camera',img)
+                    
+                    k = cv2.waitKey(10) & 0xff # Press 'ESC' for exiting video
+                    if k == 27:
+                        cv2.destroyAllWindows()
+                        i = 0
+                        break
+            #detect Led
+            if GPIO.input(LED_PIN) == 1:
+                #Close the lock
+                GPIO.output(LED_PIN, GPIO.LOW)
+                GPIO.output(relay, GPIO.LOW)
+            
+                time.sleep(0.01)
+                
+
+                
+    
+    
+except KeyboardInterrupt:
+    print('關閉程式')
+finally:
+    GPIO.cleanup()
+    print("\n [INFO] Exiting Program and cleanup stuff")
+    cam.release()
+    cv2.destroyAllWindows()
+ ```
 
