@@ -248,7 +248,7 @@ print("\n [INFO] Exiting Program and cleanup stuff")
 cam.release()
 cv2.destroyAllWindows()
 ```
-### Your samples will be stored in the file `dataset`
+### Your samples will be stored in the folder `dataset`
 
 ## Step 7: Train the recognizer
 Execute `train.py`
@@ -295,7 +295,7 @@ recognizer.write('trainer/trainer.yml') # recognizer.save() worked on Mac, but n
 # Print the numer of faces trained and end program
 print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids))))
 ```
-### trainer.yml will be stored in the file 'trainer'
+### trainer.yml will be stored in the folder 'trainer'
 
 ## Step 8: Finish the Safe
 Open two terminals to control the IOT safe
@@ -351,7 +351,8 @@ Here for [Index.html](https://github.com/EJBubble/IOT_project/tree/main/template
 1. You can press on to open the lock
 2. You can press off to close the lock and the Pi Camera
 3. The unsuccessful face detection will be known because flask will upload error.png to website
-
+- Folder `templates` ONLY store html. 
+- Folder `static` ONLY store static file, such as img, js, and css.
 ### Execute `all.py` on another terminal
 ```
 sudo python3 all.py
