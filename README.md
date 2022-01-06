@@ -81,6 +81,7 @@ sudo apt-get install python3-dev python3-pip python3-numpy
 ```
 ---
 - Modify swapfile  
+
 Raspberry Pi will need enough swap to install OpenCV.
 ```
 sudo nano /etc/dphys-swapfile
@@ -122,6 +123,7 @@ sudo ldconfig
 ```
 ---
 - Modify swapfile  
+
 After the installation of OpenCV, Raspberry Pi don't need swap.
 ```
 sudo nano /etc/dphys-swapfile
