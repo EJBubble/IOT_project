@@ -182,6 +182,10 @@ sudo pip3 install datetime
 //Flask
 sudo pip3 install Flask
 ```
+## Step 5 : Clone the file from github
+```
+git clone https://github.com/EJBubble/IOT_project.git
+```
 
 
 
