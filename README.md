@@ -155,5 +155,10 @@ Take a still picture and save it to the Desktop
 ```
 raspistill -o Desktop/image.jpg
 ```
-[IOT_3](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_3.png)
+![IOT_3](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_3.png)
 ### Finish to set up Pi Camera
+
+## Step 3: Install seven segement、push button、relay module and power supply
+### Circuit diagram
+![IOT_bb](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_bb.png)
+
