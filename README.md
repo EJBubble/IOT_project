@@ -1,7 +1,7 @@
 # IOT FINAL PROJECT -- *IOT SAFE*
 
 ---
-![picture](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_2.jpg)
+![IOT_2](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_2.jpg)
 ___
 
 ## Overview
@@ -142,7 +142,18 @@ sudo systemctl restart dphys-swapfile
 sudo pip3 install opencv-python
 sudo pip3 pip install opencv-contrib-python
 ```
-Finish to set up OpenCV environment
+### Finish to set up OpenCV environment
 
+## Step 2: Set up the Pi Camera
+### Installation
 
+Install your Pi Camera on your Raspberry Pi  
+🔗Link👉[Getting started with the Camera Module](https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/0)
 
+### Test
+Take a still picture and save it to the Desktop
+```
+raspistill -o Desktop/image.jpg
+```
+[IOT_3](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_3.png)
+### Finish to set up Pi Camera
