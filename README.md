@@ -181,12 +181,116 @@ sudo pip3 install pygame
 sudo pip3 install datetime
 //Flask
 sudo pip3 install Flask
+//pillow
+sudo pip3 install pillow
 ```
 ## Step 5 : Clone the file from github
 ```
 git clone https://github.com/EJBubble/IOT_project.git
 ```
 
+## Step 6 : Get Face Sample
+Take the Pi camera and execute `Cap.py`
+```
+cd IOT_project
+sudo python3 Cap.py
+```
+```python
+#Cap.py
+import cv2
+import os
+ 
+#捕獲圖像
+cam = cv2.VideoCapture(0)
+cam.set(3, 640) # set video width
+cam.set(4, 480) # set video height
 
+#引入預訓練分類器
+#User: your username
+face_detector = cv2.CascadeClassifier('/home/User/opencv/data/haarcascades/haarcascade_frontalface_default.xml')
+ 
+# For each person, enter one numeric face id
+face_id = input('\n enter user id end press <return> ==>  ')
+ 
+print("\n [INFO] Initializing face capture. Look the camera and wait ...")
+# Initialize individual sampling face count
+count = 0
+ 
+while(True):
+    ret, img = cam.read()
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) #gray 表示轉換 grayscale 圖像 (人臉辨識在grayscale 圖像下進行)
+    faces = face_detector.detectMultiScale(gray, 1.3, 5)
+    
+    #x,y,w,h得到人臉數據
+    for (x,y,w,h) in faces:
+        cv2.rectangle(img, (x,y), (x+w,y+h), (255,0,0), 2)     
+        count += 1
+ 
+        # Save the captured image into the datasets folder
+        # User: your username
+        cv2.imwrite("/home/User/IOT_project/dataset/User." + str(face_id) + '.' + str(count) + ".jpg", gray[y:y+h,x:x+w])
+        
+        #顯示
+        cv2.imshow('image', img)
+ 
+    k = cv2.waitKey(100) & 0xff # Press 'ESC' for exiting video
+    if k == 27:
+        break
+    elif count >= 30: # Take 30 face sample and stop video
+         break
+ 
+# Do a bit of cleanup
+print("\n [INFO] Exiting Program and cleanup stuff")
+cam.release()
+cv2.destroyAllWindows()
+```
+### Your samples will be stored in the file `dataset`
 
+## Step 7: Train the recognizer
+Execute `train.py`
+```
+sudo python3 train.py
+```
+```python
+import numpy as np
+from PIL import Image
+import os
+import cv2
+ 
+# Path for face image database
+# User: your username
+path = '/home/User/IOT_project/dataset'
+#LBPHFaceRecognizer人臉識别器由OpenCV提供
+recognizer = cv2.face.LBPHFaceRecognizer_create()
+# User: your username
+detector = cv2.CascadeClassifier("/home/User/opencv/data/haarcascades/haarcascade_frontalface_default.xml");
+ 
+# function to get the images and label data
+def getImagesAndLabels(path):
+    imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
+    faceSamples=[]
+    ids = []
+    for imagePath in imagePaths:
+        PIL_img = Image.open(imagePath).convert('L') # convert it to grayscale
+        img_numpy = np.array(PIL_img,'uint8')
+        id = int(os.path.split(imagePath)[-1].split(".")[1])
+        faces = detector.detectMultiScale(img_numpy)
+        for (x,y,w,h) in faces:
+            faceSamples.append(img_numpy[y:y+h,x:x+w])
+            ids.append(id)
+    return faceSamples,ids
+ 
+print ("\n [INFO] Training faces. It will take a few seconds. Wait ...")
+faces,ids = getImagesAndLabels(path)
+recognizer.train(faces, np.array(ids))
+ 
+# Save the model into trainer/trainer.yml
+recognizer.write('trainer/trainer.yml') # recognizer.save() worked on Mac, but not on Pi
+ 
+# Print the numer of faces trained and end program
+print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids))))
+```
+### trainer.yml will be stored in the file 'trainer'
+
+## Step 8: 
 
