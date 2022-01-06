@@ -134,6 +134,13 @@ Finally, reboot swapfile.
 ```
 sudo systemctl restart dphys-swapfile
 ```
+---
+- Install OpenCV and OpenCV-contrib for python
+```
+sudo pip3 install opencv-python
+sudo pip3 pip install opencv-contrib-python
+```
+Finish to set up OpenCV environment
 
 
 
