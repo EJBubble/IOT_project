@@ -560,4 +560,28 @@ finally:
     cam.release()
     cv2.destroyAllWindows()
  ```
+ ---
+### Success Face Detection
+1. Press the push button
+2. Pi Camera will open and LED will be light
+3. Detect Face
+4. System play sound "HELLO" and 7 segment output "HELLO"
+5. Lock will open
+6. Press off button on the website
+7. Lock and Pi Camera will close
+8. LED will be dark
+---
+### Error Face Detection
+1. Press the push button
+2. Pi Camera will open and LED will be light
+3. Detect Face
+4. System will play sound "Error" and 7 segment will output "Error"
+5. Take a picture of intruder
+6. Upload the picture to the website
+7. You need to use terminal to close the system because intruder
+8. LED will be dark
+## Video
+## References
+[https://shumeipai.nxez.com/2018/03/09/real-time-face-recognition-an-end-to-end-project-with-raspberry-pi.html](https://shumeipai.nxez.com/2018/03/09/real-time-face-recognition-an-end-to-end-project-with-raspberry-pi.html)  
+[https://iotdesignpro.com/projects/iot-based-solenoid-door-lock-using-raspberry-pi-4](https://iotdesignpro.com/projects/iot-based-solenoid-door-lock-using-raspberry-pi-4)
 
