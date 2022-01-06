@@ -142,7 +142,7 @@ sudo systemctl restart dphys-swapfile
 sudo pip3 install opencv-python
 sudo pip3 pip install opencv-contrib-python
 ```
-### Finish to set up OpenCV environment
+### *__Finish to set up OpenCV environment__*
 
 ## Step 2: Set up the Pi Camera
 ### Installation
@@ -155,10 +155,34 @@ Take a still picture and save it to the Desktop
 ```
 raspistill -o Desktop/image.jpg
 ```
-![IOT_3](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_3.png)
-### Finish to set up Pi Camera
+![IOT_3](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_3.png)  
+### *__Finish to set up Pi Camera__*
 
-## Step 3: Install seven segement、push button、relay module and power supply
+## Step 3: Install seven segement、push button、relay module、power supply and 3.5mm speaker
+![IOT_5](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_5.jpg)
+
 ### Circuit diagram
 ![IOT_bb](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_bb.png)
+
+### 3.5mm speaker
+![IOT_4](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_4.jpg)
+### *__Finish to install seven segement、push button、relay module、power supply and 3.5mm speaker__*
+
+## Step 4: Install Python library that the project need
+```
+//RPi.GPIO
+sudo apt-get install python3-rpi.gpio
+//numpy
+sudo pip3 install numpy
+//pygame
+//It can play sound by executing python
+sudo pip3 install pygame
+//datetime
+sudo pip3 install datetime
+//Flask
+sudo pip3 install Flask
+```
+
+
+
 
