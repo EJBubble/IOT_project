@@ -80,19 +80,19 @@ sudo apt-get install libhdf5-dev libhdf5–103
 sudo apt-get install python3-dev python3-pip python3-numpy
 ```
 ---
-- Modify swapfile
+- Modify swapfile  
+Raspberry Pi will need enough swap to install OpenCV.
 ```
 sudo nano /etc/dphys-swapfile
 ```
-Find this code `CONF_SWAPSIZE=100`.
-Change to `CONF_SWAPSIZE=2048`.
-Press `CTRL+O`, and then press `ENTER` to save the file.
-Press `CTRL+X` to leave.
-Then, reboot swapfile.
+Find this code `CONF_SWAPSIZE=100`.  
+Change to `CONF_SWAPSIZE=2048`.  
+Press `CTRL+O`, and then press `ENTER` to save the file.  
+Press `CTRL+X` to leave.  
+Then, reboot swapfile.  
 ```
 sudo systemctl restart dphys-swapfile
 ```
-Raspberry Pi will need enough swap to install OpenCV.
 ___
 - Get OpenCV and OpenCV-contrib
 ```
@@ -121,18 +121,19 @@ sudo make install
 sudo ldconfig
 ```
 ---
-- Modify swapfile
+- Modify swapfile  
+After the installation of OpenCV, Raspberry Pi don't need swap.
 ```
 sudo nano /etc/dphys-swapfile
 ```
-Find this code `CONF_SWAPSIZE=2048`.
-Change to `CONF_SWAPSIZE=100`.
-Press `CTRL+O`, and then press `ENTER` to save the file.
-Press `CTRL+X` to leave.
+Find this code `CONF_SWAPSIZE=2048`.  
+Change to `CONF_SWAPSIZE=100`.  
+Press `CTRL+O`, and then press `ENTER` to save the file.  
+Press `CTRL+X` to leave.  
 Finally, reboot swapfile.
 ```
 sudo systemctl restart dphys-swapfile
 ```
-After the installation of OpenCV, Raspberry Pi don't need swap.
+
 
 
