@@ -143,8 +143,7 @@ sudo pip3 install opencv-python
 sudo pip3 pip install opencv-contrib-python
 ```
 ### *__Finish to set up OpenCV environment__*
-
----
+___
 ## Step 2: Set up the Pi Camera
 ### Installation
 
@@ -158,7 +157,7 @@ raspistill -o Desktop/image.jpg
 ```
 ![IOT_3](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_3.png)  
 ### *__Finish to set up Pi Camera__*
-
+___
 ## Step 3: Install seven segement、push button、relay module、power supply and 3.5mm speaker
 ![IOT_5](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_5.jpg)
 
@@ -174,7 +173,7 @@ raspistill -o Desktop/image.jpg
 ![IOT_6](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_6.jpg)
 ![IOT_7](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_7.jpg)\
 
----
+___
 ## Step 4: Install Python library that the project need
 ```
 //RPi.GPIO
