@@ -600,7 +600,7 @@ ___
 - [Successful Face Detection](https://youtu.be/O-GbZm2E6mo)
 - [Unsuccessful Face Detection](https://youtu.be/MalWb60kft0)
 ---
-## !!!!!!!!
+## Particular Thanks
 - Thank 資管3 劉維仁 for the demo video
 - Thank 資管3 翁浩宸 for the demo video
 ## References
