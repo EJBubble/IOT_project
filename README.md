@@ -14,7 +14,7 @@ Someone like to eat my snack actively  :cry:
 ## Features
 1. Use the face detection to control the lock mainly
 2. Play sound to check whether the face detection is successful
-3. Output the hint that you can know if the face detection is successful by seven segement
+3. Output the hint that you can know if the face detection is successful by controlling seven segement and speaker
 4. Open or close the lock by website
 5. Get the intruder's photo and upload to the website
 
@@ -44,7 +44,7 @@ Someone like to eat my snack actively  :cry:
 - Rapsberry OS
 - OpenCV 3.2.0
 - Python 3.7
-
+---
 ## Step 1: Set up the OpenCV Environment
 ### Introduction
 OpenCV (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products.The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms.These algorithms can be used to detect and recognize faces, identify objects, etc.
@@ -144,6 +144,7 @@ sudo pip3 pip install opencv-contrib-python
 ```
 ### *__Finish to set up OpenCV environment__*
 
+---
 ## Step 2: Set up the Pi Camera
 ### Installation
 
@@ -164,14 +165,16 @@ raspistill -o Desktop/image.jpg
 ### Circuit diagram
 ![IOT_bb](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_bb.png)
 
+---
 ### 3.5mm speaker
 ![IOT_4](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_4.jpg)
 ### *__Finish to install seven segement、push button、relay module、power supply and 3.5mm speaker__*
-
+---
 ## Step 3.1: Make the Safe
 ![IOT_6](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_6.jpg)
-![IOT_7](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_7.jpg)
+![IOT_7](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_7.jpg)\
 
+---
 ## Step 4: Install Python library that the project need
 ```
 //RPi.GPIO
@@ -188,11 +191,12 @@ sudo pip3 install Flask
 //pillow
 sudo pip3 install pillow
 ```
+---
 ## Step 5 : Clone the file from github
 ```
 git clone https://github.com/EJBubble/IOT_project.git
 ```
-
+---
 ## Step 6 : Get Face Sample
 Take the Pi camera and execute `Cap.py`
 ```
@@ -250,6 +254,7 @@ cv2.destroyAllWindows()
 ```
 ### Your samples will be stored in the folder `dataset`
 
+---
 ## Step 7: Train the recognizer
 Execute `train.py`
 ```
@@ -297,6 +302,7 @@ print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids)))
 ```
 ### trainer.yml will be stored in the folder 'trainer'
 
+---
 ## Step 8: Finish the Safe
 Open two terminals to control the IOT safe
 ### Execute `IOT.py` on one terminal
@@ -586,10 +592,12 @@ finally:
 If you want to add user of IOT safe, you can run step 6 to step 8 again.
 ## Improvement in the future
 The Face Detection should be improved,  because it has a lower precision
+---
 ## Demo Video
 - [Train the recognizer](https://youtu.be/6u7CcHiMU1M)
 - [Successful Face Detection](https://youtu.be/O-GbZm2E6mo)
 - [Unsuccessful Face Detection](https://youtu.be/MalWb60kft0)
+---
 ## !!!!!!!!
 - Thank 資管3 劉維仁 for the video
 - Thank 資管3 翁浩宸 for the video
