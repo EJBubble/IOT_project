@@ -211,7 +211,7 @@ cam.set(4, 480) # set video height
 
 #引入預訓練分類器
 #User: your username
-face_detector = cv2.CascadeClassifier('/home/User/opencv/data/haarcascades/haarcascade_frontalface_default.xml')
+face_detector = cv2.CascadeClassifier('/home/User/opencv/data/haarcascades/haarcascade_frontalface_alt_tree.xml')
  
 # For each person, enter one numeric face id
 face_id = input('\n enter user id end press <return> ==>  ')
@@ -223,7 +223,7 @@ count = 0
 while(True):
     ret, img = cam.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) #gray 表示轉換 grayscale 圖像 (人臉辨識在grayscale 圖像下進行)
-    faces = face_detector.detectMultiScale(gray, 1.3, 5)
+    faces = face_detector.detectMultiScale(gray, 1.3, 3)
     
     #x,y,w,h得到人臉數據
     for (x,y,w,h) in faces:
@@ -268,7 +268,7 @@ path = '/home/User/IOT_project/dataset'
 #LBPHFaceRecognizer人臉識别器由OpenCV提供
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 # User: your username
-detector = cv2.CascadeClassifier("/home/User/opencv/data/haarcascades/haarcascade_frontalface_default.xml");
+detector = cv2.CascadeClassifier("/home/User/opencv/data/haarcascades/haarcascade_frontalface_alt_tree.xml");
  
 # function to get the images and label data
 def getImagesAndLabels(path):
@@ -312,7 +312,7 @@ import RPi.GPIO as GPIO
 from datetime import timedelta
 
 #Pin of relay module
-relay = 1
+relay = 7
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -375,7 +375,7 @@ i = 0
 #set PIN
 BUTTON_PIN = 14
 LED_PIN = 15
-relay = 1
+relay = 7
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -416,7 +416,7 @@ def digdisp(digit):
 #Recognize      
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('/home/user/IOT_project/trainer/trainer.yml')
-cascadePath = "/home/User/opencv/data/haarcascades/haarcascade_frontalface_default.xml"
+cascadePath = "/home/User/opencv/data/haarcascades/haarcascade_frontalface_alt_tree.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath);
 #User: your username
 
@@ -459,7 +459,7 @@ try:
      
                     faces = faceCascade.detectMultiScale( 
                         gray,
-                        scaleFactor = 1.2,
+                        scaleFactor = 1.3,
                         minNeighbors = 5,
                         minSize = (int(minW), int(minH)),
                        )
@@ -469,7 +469,7 @@ try:
                         id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
  
                         # Check confidence of detect face
-                        if (confidence < 60):
+                        if (confidence < 45):
                             id = names[id]
                             confidence = "  {0}%".format(round(100 - confidence))
                             
