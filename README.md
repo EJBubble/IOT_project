@@ -584,11 +584,18 @@ finally:
 ---
 ### Face Detection
 If you want to add user of IOT safe, you can run step 6 to step 8 again.
-## Improvement
-The Face Detection can 
+## Improvement in the future
+The Face Detection should be improved,  because it has a lower precision
 ## Demo Video
+- [Train the recognizer](https://youtu.be/6u7CcHiMU1M)
+- [Successful Face Detection](https://youtu.be/O-GbZm2E6mo)
+- [Unsuccessful Face Detection](https://youtu.be/MalWb60kft0)
+## !!!!!!!!
+- Thank 資管3 劉維仁 for the video
+- Thank 資管3 翁浩宸 for the video
 ## References
 [https://shumeipai.nxez.com/2018/03/09/real-time-face-recognition-an-end-to-end-project-with-raspberry-pi.html](https://shumeipai.nxez.com/2018/03/09/real-time-face-recognition-an-end-to-end-project-with-raspberry-pi.html)  
 [https://iotdesignpro.com/projects/iot-based-solenoid-door-lock-using-raspberry-pi-4](https://iotdesignpro.com/projects/iot-based-solenoid-door-lock-using-raspberry-pi-4)
+
 
 
