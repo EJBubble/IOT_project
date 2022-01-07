@@ -3,7 +3,7 @@ import time
 import RPi.GPIO as GPIO
 from datetime import timedelta
 
-relay = 1
+relay = 7
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)

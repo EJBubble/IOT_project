@@ -5,7 +5,7 @@ cam = cv2.VideoCapture(0)
 cam.set(3, 640) # set video width
 cam.set(4, 480) # set video height
  
-face_detector = cv2.CascadeClassifier('/home/ej108403545/opencv/data/haarcascades/haarcascade_frontalface_default.xml')
+face_detector = cv2.CascadeClassifier('/home/ej108403545/opencv/data/haarcascades/haarcascade_frontalface_alt_tree.xml')
  
 # For each person, enter one numeric face id
 face_id = input('\n enter user id end press <return> ==>  ')
@@ -17,7 +17,7 @@ count = 0
 while(True):
     ret, img = cam.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces = face_detector.detectMultiScale(gray, 1.3, 5)
+    faces = face_detector.detectMultiScale(gray, 1.3, 3)
  
     for (x,y,w,h) in faces:
         cv2.rectangle(img, (x,y), (x+w,y+h), (255,0,0), 2)     

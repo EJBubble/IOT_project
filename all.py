@@ -11,7 +11,7 @@ i = 0
 
 BUTTON_PIN = 14
 LED_PIN = 15
-relay = 1
+relay = 7
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -51,7 +51,7 @@ def digdisp(digit):
       
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('/home/ej108403545/FaceDetection/trainer/trainer.yml')
-cascadePath = "/home/ej108403545/opencv/data/haarcascades/haarcascade_frontalface_default.xml"
+cascadePath = "/home/ej108403545/opencv/data/haarcascades/haarcascade_frontalface_alt_tree.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath);
 
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -60,7 +60,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 id = 0
  
 # names related to ids: example ==> Marcelo: id=1,  etc
-names = ['None', 'EJ', 'PaulLiu', 'GoodGUY', 'Z', 'W'] 
+names = ['None', 'GoodGUY', 'GoodGUY', 'GoodGUY', 'GoodGUY', 'GoodGUY'] 
 # Initialize and start realtime video capture
 cam = cv2.VideoCapture(0)
 cam.set(3, 640) # set video widht
@@ -93,7 +93,7 @@ try:
      
                     faces = faceCascade.detectMultiScale( 
                         gray,
-                        scaleFactor = 1.2,
+                        scaleFactor = 1.3,
                         minNeighbors = 5,
                         minSize = (int(minW), int(minH)),
                        )
@@ -103,7 +103,7 @@ try:
                         id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
  
                         # Check if confidence is less them 100 ==> "0" is perfect match 
-                        if (confidence < 60):
+                        if (confidence < 45):
                             id = names[id]
                             confidence = "  {0}%".format(round(100 - confidence))
                             
