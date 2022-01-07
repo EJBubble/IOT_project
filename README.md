@@ -46,6 +46,7 @@ Someone like to eat my snack actively  :cry:
 - Python 3.7
 ---
 ## Step 1: Set up the OpenCV Environment
+![IOT_8](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_8.png)
 ### Introduction
 OpenCV (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products.The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms.These algorithms can be used to detect and recognize faces, identify objects, etc.
 
@@ -303,7 +304,8 @@ print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids)))
 
 ---
 ## Step 8: Finish the Safe
-Open two terminals to control the IOT safe
+###Open two terminals to control the IOT safe
+___
 ### Execute `IOT.py` on one terminal
 ```
 sudo python3 IOT.py
@@ -358,6 +360,7 @@ Here for [Index.html](https://github.com/EJBubble/IOT_project/tree/main/template
 3. The unsuccessful face detection will be known because flask will upload error.png to website
 - Folder `templates` ONLY store html. 
 - Folder `static` ONLY store static file, such as img, js, and css.
+___
 ### Execute `all.py` on another terminal
 ```
 sudo python3 all.py
