@@ -576,7 +576,6 @@ finally:
 6. Press off button on the website
 7. Lock and Pi Camera will close
 8. LED will be dark
----
 ### Error Face Detection
 1. Press the push button
 2. Pi Camera will open and LED will be light
@@ -589,9 +588,10 @@ finally:
 ---
 ### Face Detection
 If you want to add user of IOT safe, you can run step 6 to step 8 again.
+___
 ## Improvement in the future
 The Face Detection should be improved,  because it has a lower precision
-
+___
 ## Demo Video
 - [Train the recognizer](https://youtu.be/6u7CcHiMU1M)
 - [Successful Face Detection](https://youtu.be/O-GbZm2E6mo)
