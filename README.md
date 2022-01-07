@@ -591,7 +591,7 @@ finally:
 If you want to add user of IOT safe, you can run step 6 to step 8 again.
 ## Improvement in the future
 The Face Detection should be improved,  because it has a lower precision
----
+
 ## Demo Video
 - [Train the recognizer](https://youtu.be/6u7CcHiMU1M)
 - [Successful Face Detection](https://youtu.be/O-GbZm2E6mo)
