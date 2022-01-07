@@ -598,8 +598,8 @@ ___
 - [Unsuccessful Face Detection](https://youtu.be/MalWb60kft0)
 ---
 ## !!!!!!!!
-- Thank 資管3 劉維仁 for the video
-- Thank 資管3 翁浩宸 for the video
+- Thank 資管3 劉維仁 for the demo video
+- Thank 資管3 翁浩宸 for the demo video
 ## References
 [https://shumeipai.nxez.com/2018/03/09/real-time-face-recognition-an-end-to-end-project-with-raspberry-pi.html](https://shumeipai.nxez.com/2018/03/09/real-time-face-recognition-an-end-to-end-project-with-raspberry-pi.html)  
 [https://iotdesignpro.com/projects/iot-based-solenoid-door-lock-using-raspberry-pi-4](https://iotdesignpro.com/projects/iot-based-solenoid-door-lock-using-raspberry-pi-4)
