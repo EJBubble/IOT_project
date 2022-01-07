@@ -171,7 +171,7 @@ ___
 ---
 ## Step 3.1: Make the Safe
 ![IOT_6](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_6.jpg)
-![IOT_7](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_7.jpg)\
+![IOT_7](https://github.com/EJBubble/IOT_project/blob/main/Pic/IOT_7.jpg)
 
 ___
 ## Step 4: Install Python library that the project need
